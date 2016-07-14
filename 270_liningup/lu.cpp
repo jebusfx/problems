@@ -19,7 +19,7 @@ map<double,int> slope_count;
 vector<Coordinate> coordinates;
 
 double slope(int y2, int y1, int x2, int x1){
-	if((x2 - x1) == 0) //same vertical line
+	if((x2 - x1) == 0) //vertical line
 		return DBL_MAX;
 
 	return (y2 - y1)/(float)(x2-x1);
