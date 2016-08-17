@@ -5,13 +5,13 @@
 
 using namespace std;
 
-int simulate(vector<int> jumps, int greater_jump){
+int simulate(vector<int> jumps, int greater_jump, int start){
 	int temp = greater_jump;
-	for(int i = 0; i < jumps.size();i++){		
+	for(int i = start; i < jumps.size();i++){		
 		if(jumps[i] == temp)
 			temp--;
 		else if(jumps[i] > temp)
-			return simulate(jumps,++greater_jump);
+			return simulate(jumps,++greater_jump,i);
 	}
 	return greater_jump;
 }
@@ -37,7 +37,7 @@ int main(){
 			if(jump > greater_jump)
 				greater_jump = jump;			
 		}
-		printf("Case %d: %d\n",++caseno,simulate(jumps,greater_jump));		
+		printf("Case %d: %d\n",++caseno,simulate(jumps,greater_jump,0));		
 		jumps.clear();		
 	}
 	return 0;
