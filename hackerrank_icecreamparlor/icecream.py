@@ -25,11 +25,7 @@ if __name__ == "__main__":
                 sunny = elem                
                 break
                 
-        if johnny <= sunny['id']:
-            first = johnny
-            second = sunny['id']
-        else:
-            first = sunny['id']
-            second = johnny
+        first = min(johnny,sunny['id'])
+        second = max(johnny,sunny['id'])
         print '{} {}'.format(first + 1,second + 1)
         t -= 1
