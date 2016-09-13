@@ -1,40 +1,24 @@
-from heapq import heappush,nsmallest
-
-alphabet_rank = {}
+rank = {}
 
 class Alien:
 	def __init__(self,word):
 		self.word = word
-
 	def __cmp__(self,other):				
-		shortest_word = (len(self.word) if(len(self.word) <= len(other.word)) else len(other.word))		
+		shortest_word = (len(self.word) if len(self.word) <= len(other.word) else len(other.word))		
 		for i in xrange(shortest_word):
-			if(alphabet_rank[self.word[i]] > alphabet_rank[other.word[i]]):
+			if(rank[self.word[i]] > rank[other.word[i]]):
 				return 1
-			elif(alphabet_rank[self.word[i]] < alphabet_rank[other.word[i]]):
+			elif(rank[self.word[i]] < rank[other.word[i]]):
 				return -1			
-		return 0
-
-	def __repr__(self):
-		return self.word
+		return -1 if len(self.word) <= len(other.word) else 1
+		return 0	
 
 def ordenar_extraterrestre(desordenadas, orden_alfabeto):
-	ordenada = []
-	for i in xrange(len(orden_alfabeto)):
-		alphabet_rank[orden_alfabeto[i]] = i	
+	global rank
+	rank = dict((x.lower(),i) for i,x in enumerate(orden_alfabeto))
+	ordenadas = [Alien(word) for word in desordenadas]
+	return [w.word for w in sorted(ordenadas)]	
 
-	for i in xrange(len(desordenadas)):
-		heappush(ordenada,Alien(desordenadas[i]))
-
-	return nsmallest(len(ordenada),ordenada)
-
-if __name__ == "__main__":
-
-	# lista = ['miel', 'extraterrestre','creaoque', 'al', 'automovil','beale','parecebien', 'auto', 'revestir','bealo']	
-	lista = ['zy','zx','zl','za','zz']
-	alfabeto = 'zyxwvltsrqponaukjihgfedcbm'
-
-	# lista = ['miel', 'extraterrestre', 'al', 'automovil', 'auto', 'revestir']
-	# alfabeto = 'zyxwvutsrqponmlkjihgfedcba'
-
-	print ordenar_extraterrestre(lista,alfabeto)
+lista = ['miel', 'extraterrestre', 'al', 'automovil', 'auto', 'revestir']
+alfabeto = 'zyxwvutsrqponmlkjihgfedcba'
+print ordenar_extraterrestre(lista,alfabeto)
