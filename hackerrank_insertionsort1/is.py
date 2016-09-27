@@ -1,4 +1,7 @@
-#!/bin/python
+'''input
+6
+1 4 3 5 6 2
+'''
 
 def print_array(ar,n):
 	import sys
@@ -8,10 +11,10 @@ def print_array(ar,n):
 			sys.stdout.write(' ')
 	sys.stdout.write('\n')
 
-def insertionSort(ar,n):    	
+def insertionSort(ar,n):
 	e = ar[n - 1]
 	finished = False
-	i = n - 2   
+	i = n - 2
 	while not finished:   
 		if i == -1: #reached the end of the array
 			ar[0] = e			

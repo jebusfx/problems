@@ -1,8 +1,8 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 def bsearch(arr,lower,upper,first_element,m):
-    if lower <= upper:        
-        midpoint = (lower + upper)/2                
-        sum_ = arr[midpoint]['cost'] + first_element['cost']    
+    if lower <= upper:
+        midpoint = (lower + upper)/2
+        sum_ = arr[midpoint]['cost'] + first_element['cost']
         if sum_ == m and first_element['id'] != arr[midpoint]['id']:
             return arr[midpoint]['id']
         elif sum_ > m:
@@ -22,9 +22,8 @@ if __name__ == "__main__":
         for elem in ice_creams:
             johnny = bsearch(ice_creams,0,n - 1,elem,m)
             if johnny != -1:
-                sunny = elem                
+                sunny = elem
                 break
-                
         first = min(johnny,sunny['id'])
         second = max(johnny,sunny['id'])
         print '{} {}'.format(first + 1,second + 1)
